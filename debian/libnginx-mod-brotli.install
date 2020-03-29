@@ -1,0 +1,3 @@
+objs/ngx_http_brotli_filter_module.so etc/nginx/modules
+objs/ngx_http_brotli_static_module.so etc/nginx/modules
+debian/brotli.conf etc/nginx/conf.d

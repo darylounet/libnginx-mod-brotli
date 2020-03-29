@@ -1,0 +1,22 @@
+#!/bin/sh
+
+cat <<BANNER
+-----------------------------------------------------------------------
+
+The Brotli dynamic module for nginx have been installed.
+The module configuration is placed under /etc/nginx/conf.d/brotli.conf
+
+You have to enable this module by adding the following line to nginx
+configuration then reload nginx:
+
+    load_module modules/ngx_http_brotli_filter_module.so;
+
+Please refer to the Brotli module documentation for further details:
+https://github.com/google/ngx_brotli
+
+-----------------------------------------------------------------------
+BANNER
+
+#DEBHELPER#
+
+exit 0
