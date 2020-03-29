@@ -1,14 +1,14 @@
 
 Dockerfiles for building libnginx-mod-brotli for Debian / Ubuntu
 
-[![packagecloud deb packages](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/DaryL/libnginx-mod-brotli-stable) [![Build Status](https://travis-ci.org/darylounet/libnginx-mod-brotli.svg?branch=stable)](https://travis-ci.org/darylounet/libnginx-mod-brotli)
+[![packagecloud deb packages](https://img.shields.io/badge/deb-packagecloud.io-844fec.svg)](https://packagecloud.io/DaryL/libnginx-mod-brotli-mainline) [![Build Status](https://travis-ci.org/darylounet/libnginx-mod-brotli.svg?branch=mainline)](https://travis-ci.org/darylounet/libnginx-mod-brotli)
 
 If you're just interested in installing built packages, go there :
-https://packagecloud.io/DaryL/libnginx-mod-brotli-stable
+https://packagecloud.io/DaryL/libnginx-mod-brotli-mainline
 
-Instructions : https://packagecloud.io/DaryL/libnginx-mod-brotli-stable/install#manual-deb
+Instructions : https://packagecloud.io/DaryL/libnginx-mod-brotli-mainline/install#manual-deb
 
-If you're interested in installing [mainline](https://packagecloud.io/DaryL/libnginx-mod-brotli-mainline) NGiNX packages, go there :
+If you're interested in installing [stable](https://packagecloud.io/DaryL/libnginx-mod-brotli-stable) NGiNX packages, go there :
 https://packagecloud.io/DaryL/libnginx-mod-brotli-mainline
 
 If you want to build packages by yourself, this is for you :
@@ -18,7 +18,7 @@ DCH Dockerfile usage (always use stretch as it is replaced before build) :
 ```bash
 docker build -t deb-dch -f Dockerfile-deb-dch .
 docker run -it -v $PWD:/local -e HOME=/local deb-dch bash -c 'cd /local && \
-dch -M -v 1.0.7+nginx-1.16.1-1~stretch --distribution "stretch" "Updated upstream."'
+dch -M -v 1.0.7+nginx-1.17.9-1~stretch --distribution "stretch" "Updated upstream."'
 ```
 
 Build Dockerfile usage :
@@ -26,14 +26,14 @@ Build Dockerfile usage :
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
 --build-arg DISTRIB=debian --build-arg RELEASE=stretch \
---build-arg NGINX_VERSION=1.16.1 .
+--build-arg NGINX_VERSION=1.17.9 .
 ```
 
 Or for Ubuntu :
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
 --build-arg DISTRIB=ubuntu --build-arg RELEASE=bionic \
---build-arg NGINX_VERSION=1.16.1 .
+--build-arg NGINX_VERSION=1.17.9 .
 ```
 
 Then :

@@ -1,5 +1,5 @@
-libnginx-mod-brotli (1.0.7+nginx-1.16.1-1~stretch) stretch; urgency=medium
+libnginx-mod-brotli (1.0.7+nginx-1.17.9-1~stretch) stretch; urgency=medium
 
-  * NGiNX Brotli module for stock NGiNX.
+  * NGiNX Brotli module for stock mainline NGiNX.
 
  -- Cyril Aknine <caknine@clever-age.com>  Sun, 29 Mar 2020 16:05:34 +0200
