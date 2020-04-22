@@ -18,7 +18,7 @@ DCH Dockerfile usage (always use stretch as it is replaced before build) :
 ```bash
 docker build -t deb-dch -f Dockerfile-deb-dch .
 docker run -it -v $PWD:/local -e HOME=/local deb-dch bash -c 'cd /local && \
-dch -M -v 1.0.7+nginx-1.16.1-1~stretch --distribution "stretch" "Updated upstream."'
+dch -M -v 1.0.7+nginx-1.18.0-1~stretch --distribution "stretch" "Updated upstream."'
 ```
 
 Build Dockerfile usage :
@@ -26,14 +26,14 @@ Build Dockerfile usage :
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
 --build-arg DISTRIB=debian --build-arg RELEASE=stretch \
---build-arg NGINX_VERSION=1.16.1 .
+--build-arg NGINX_VERSION=1.18.0 .
 ```
 
 Or for Ubuntu :
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
 --build-arg DISTRIB=ubuntu --build-arg RELEASE=bionic \
---build-arg NGINX_VERSION=1.16.1 .
+--build-arg NGINX_VERSION=1.18.0 .
 ```
 
 Then :
