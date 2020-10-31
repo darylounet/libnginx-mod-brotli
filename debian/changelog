@@ -1,3 +1,9 @@
+libnginx-mod-brotli (1.0.9+nginx-1.19.4-1~stretch) stretch; urgency=medium
+
+  * Updated upstream.
+
+ -- Cyril Aknine <caknine@clever-age.com>  Sun, 01 Nov 2020 00:43:03 +0100
+
 libnginx-mod-brotli (1.0.7+nginx-1.17.9-1~stretch) stretch; urgency=medium
 
   * NGiNX Brotli module for stock mainline NGiNX.

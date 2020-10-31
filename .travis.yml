@@ -1,4 +1,6 @@
-sudo: required
+arch: amd64
+os: linux
+dist: focal
 services:
   - docker
 
@@ -11,13 +13,9 @@ cache:
     directories:
      - $HOME/.cache
 
-language: C
+language: c
 
 before_install:
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - sudo apt-get -y install docker-ce
   - ./travis-build.sh
 
 script:
@@ -28,11 +26,10 @@ script:
   - rm -Rf build
 
 env:
-    matrix:
-#      - OS=ubuntu DIST=trusty
+    jobs:
       - OS=ubuntu DIST=xenial
       - OS=ubuntu DIST=bionic
-#      - OS=ubuntu DIST=yakkety
+      - OS=ubuntu DIST=focal
 #      - OS=debian DIST=jessie
 #      - OS=debian DIST=wheezy
       - OS=debian DIST=stretch
@@ -52,7 +49,7 @@ deploy:
       tags: true
       condition: -n "${OS}" && -n "${DIST}" && -n "${PACKAGECLOUD_TOKEN}"
   - provider: releases
-    api_key:
+    token:
       secure: Pmo0JPZn1UzKCNFgsaWGA8WCMDDbeG+5zAD9NXStewgvCi2+Auf6k8cVxgUoinv4JLkIPgMzbxHgyWqIRZuowGKz21JZW9LWUsAWDtP4XqWYpHd3gBVzDTzrA8tOEnAtwKc+q+i2wWXKwzsb8TRoGKeadSDBZm802GnGDdP3hJLqdqXzj7dGWw4tTgUbAyQyHURXWH2vX8VV9tv+0v4xSCEP+peXgDf/0rKVjO/PR4kfk2o8LTJswW/V/aC+ecqeI0hc6HRZrKowmzrIhGIsCmYTOwalLZOVD/b+UXpDlRLEnpVsSz50Y8X1BSF+ycacGMR2j8BoTtM1w2UxQS+zDLNQZOnq4B07Ei94Qqczb0r/+DsJXWBQmFYRr5Lg8ZQZCmftI8Or5F08q7mbs8ejDeq7X3gFf/dmcDpCnOIvMr+BKYLXccMv4t/D3FEDbMi8IJxMvdpXSUYQ/2KGbq99Mq7PpTJZnNKHDUQHj3Eik4stBef7/tjkh/gktlvfXLJYU7rGnhL0JCvBkBT3SwYwWpwU99aylT5uF8sX6ZUwopDWXd1kw3KKwk0P1U9gJtbqzyvVAdixv8EnDLad5tL43kEUx5CZI8z2rC4yQt5wx9M75khIg9B+DYOEjpiLZgD11zNOM4PHuKtFMfAettFPF/zVsOnKmrT6mwESHaRx1/I=
     file_glob: true
     file: ./*.deb
