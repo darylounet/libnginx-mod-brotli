@@ -1,3 +1,9 @@
+libnginx-mod-brotli (1.0.9+nginx-1.20.1-1~stretch) stretch; urgency=medium
+
+  * Updated upstream.
+
+ -- Cyril Aknine <caknine@clever-age.com>  Thu, 27 May 2021 15:49:13 +0200
+
 libnginx-mod-brotli (1.0.9+nginx-1.20.0-1~stretch) stretch; urgency=medium
 
   * Updated upstream.
