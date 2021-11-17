@@ -3,7 +3,7 @@
 # Usage :
 #
 #   docker build -t build-nginx-brotli -f Dockerfile-deb \
-#       --build-arg DISTRIB=debian --build-arg RELEASE=stretch \
+#       --build-arg DISTRIB=debian --build-arg RELEASE=bullseye \
 #       --build-arg NGINX_VERSION=1.18.0 .
 #
 # Or Ubuntu :
@@ -26,10 +26,10 @@
 # curl -s https://nginx.org/packages/debian/pool/nginx/n/nginx/ |grep '"nginx_' | sed -n "s/^.*\">nginx_\(.*\)\~.*$/\1/p" |sort -Vr |head -1| cut -d'-' -f1
 
 ARG DISTRIB=debian
-ARG RELEASE=stretch
+ARG RELEASE=bullseye
 
 FROM ${DISTRIB}:${RELEASE}
-MAINTAINER Cyril Aknine "caknine@clever-age.com"
+LABEL org.opencontainers.image.authors="Cyril Aknine <caknine@clever-age.com>"
 
 ARG DISTRIB
 ARG RELEASE
@@ -53,8 +53,8 @@ RUN wget -qO - https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar zx
 
 COPY debian nginx-${NGINX_VERSION}/debian
 
-RUN sed -i "s/stretch; urgency/${RELEASE}; urgency/g" nginx-${NGINX_VERSION}/debian/changelog
-RUN sed -i "s/~stretch)/~${RELEASE})/g" nginx-${NGINX_VERSION}/debian/changelog
+RUN sed -i "s/bullseye; urgency/${RELEASE}; urgency/g" nginx-${NGINX_VERSION}/debian/changelog
+RUN sed -i "s/~bullseye)/~${RELEASE})/g" nginx-${NGINX_VERSION}/debian/changelog
 RUN sed -i "s/{NGINX_VERSION}/${NGINX_VERSION}-${NGINX_DEB_RELEASE}~${RELEASE}/g" nginx-${NGINX_VERSION}/debian/control
 
 RUN cd nginx-${NGINX_VERSION} && dpkg-buildpackage
