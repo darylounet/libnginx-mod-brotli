@@ -20,7 +20,7 @@ DCH Dockerfile usage (always use bullseye as it is replaced before build) :
 ```bash
 docker build -t deb-dch -f Dockerfile-deb-dch .
 docker run -it -v $PWD:/local -e HOME=/local deb-dch bash -c 'cd /local && \
-dch -M -v 1.0.7+nginx-1.18.0-1~bullseye --distribution "strbullseyeetch" "Updated upstream."'
+dch -M -v 1.0.7+nginx-1.18.0-1~bullseye --distribution "bullseye" "Updated upstream."'
 ```
 
 Build Dockerfile usage :
