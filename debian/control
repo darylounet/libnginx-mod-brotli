@@ -13,7 +13,7 @@ Standards-Version: 3.9.8.0
 Homepage: https://github.com/google/brotli
 
 Package: libnginx-mod-brotli
-Architecture: amd64 i386
+Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, nginx (= {NGINX_VERSION})
 Description: Brotli is a generic-purpose lossless compression algorithm 
  that compresses data using a combination of a modern variant of the LZ77 algorithm,
