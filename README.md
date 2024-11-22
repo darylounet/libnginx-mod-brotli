@@ -27,15 +27,15 @@ Build Dockerfile usage :
 
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
---build-arg DISTRIB=debian --build-arg RELEASE=bullseye \
---build-arg NGINX_VERSION=1.18.0 .
+--build-arg DISTRIB=debian --build-arg RELEASE=bookworm \
+--build-arg NGINX_VERSION=1.26.0 .
 ```
 
 Or for Ubuntu :
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
---build-arg DISTRIB=ubuntu --build-arg RELEASE=bionic \
---build-arg NGINX_VERSION=1.18.0 .
+--build-arg DISTRIB=ubuntu --build-arg RELEASE=noble \
+--build-arg NGINX_VERSION=1.26.0 .
 ```
 
 Then :
