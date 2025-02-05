@@ -10,16 +10,18 @@ jobs:
       matrix:
         include:
           - os: ubuntu
-            dist: bionic
-          - os: ubuntu
             dist: focal
-          - os: debian
-            dist: buster
+          - os: ubuntu
+            dist: jammy
+          - os: ubuntu
+            dist: noble
           - os: debian
             dist: bullseye
+          - os: debian
+            dist: bookworm
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Login to Docker Registry
         run: docker login "$DOCKER_REGISTRY" -u "$DOCKER_USERNAME" --password-stdin <<< "$DOCKER_PASSWORD"
         env:
@@ -40,7 +42,7 @@ jobs:
           mv build/src/*.deb ./ && \
           rm -Rf build
       - name: Deploy to GitHub Releases
-        uses: docker://antonyurchenko/git-release:latest
+        uses: docker://antonyurchenko/git-release:v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DRAFT_RELEASE: "true"

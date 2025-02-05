@@ -10,6 +10,9 @@ https://packagecloud.io/DaryL/libnginx-mod-brotli-mainline
 
 Instructions : https://packagecloud.io/DaryL/libnginx-mod-brotli-mainline/install#manual-deb
 
+If you're interested in installing [stable](https://packagecloud.io/DaryL/libnginx-mod-brotli-stable) NGiNX packages, go there :
+https://packagecloud.io/DaryL/libnginx-mod-brotli-stable
+
 If you want to build packages by yourself, this is for you :
 
 DCH Dockerfile usage (always use bullseye as it is replaced before build) :
@@ -24,15 +27,15 @@ Build Dockerfile usage :
 
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
---build-arg DISTRIB=debian --build-arg RELEASE=bullseye \
---build-arg NGINX_VERSION=1.21.0 .
+--build-arg DISTRIB=debian --build-arg RELEASE=bookworm \
+--build-arg NGINX_VERSION=1.27.0 .
 ```
 
 Or for Ubuntu :
 ```bash
 docker build -t build-nginx-brotli -f Dockerfile-deb \
---build-arg DISTRIB=ubuntu --build-arg RELEASE=bionic \
---build-arg NGINX_VERSION=1.21.0 .
+--build-arg DISTRIB=ubuntu --build-arg RELEASE=noble \
+--build-arg NGINX_VERSION=1.27.0 .
 ```
 
 Then :
