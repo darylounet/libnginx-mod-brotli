@@ -5,20 +5,40 @@ on:
       - '**'
 jobs:
   Build-And-Deploy:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
         include:
           - os: ubuntu
             dist: focal
+            runner: ubuntu-24.04-arm
           - os: ubuntu
             dist: jammy
+            runner: ubuntu-24.04-arm
           - os: ubuntu
             dist: noble
+            runner: ubuntu-24.04-arm
           - os: debian
             dist: bullseye
+            runner: ubuntu-24.04-arm
           - os: debian
             dist: bookworm
+            runner: ubuntu-24.04-arm
+          - os: ubuntu
+            dist: focal
+            runner: ubuntu-24.04
+          - os: ubuntu
+            dist: jammy
+            runner: ubuntu-24.04
+          - os: ubuntu
+            dist: noble
+            runner: ubuntu-24.04
+          - os: debian
+            dist: bullseye
+            runner: ubuntu-24.04
+          - os: debian
+            dist: bookworm
+            runner: ubuntu-24.04
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -42,28 +62,18 @@ jobs:
           mv build/src/*.deb ./ && \
           rm -Rf build
       - name: Deploy to GitHub Releases
-        uses: docker://antonyurchenko/git-release:v6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DRAFT_RELEASE: "true"
-          PRE_RELEASE: "false"
-          CHANGELOG_FILE: "none"
-          ALLOW_EMPTY_CHANGELOG: "true"
-          TAG_PREFIX_REGEX: ".*"
-        with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ./*.deb
-      - name: Deploy to GitHub Releases
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           artifacts: "./*.deb"
+          draft: true
           token: ${{ secrets.GITHUB_TOKEN }}
           omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
       - name: Deploy to packagecloud
-        uses: docker://lpenz/ghaction-packagecloud:v0.1
+        uses: golift/upload-packagecloud@v1.1
         with:
-          user: ${{ secrets.PACKAGECLOUD_USER }}
-          repository: ${{ secrets.PACKAGECLOUD_REPO }}/${{ matrix.os }}/${{ matrix.dist }}
-        env:
-          PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+          userrepo: ${{ secrets.PACKAGECLOUD_USER }}/${{ secrets.PACKAGECLOUD_REPO }}
+          debdists: ${{ matrix.os }}/${{ matrix.dist }}
+          apitoken: ${{ secrets.PACKAGECLOUD_TOKEN }}
+          packages: .
