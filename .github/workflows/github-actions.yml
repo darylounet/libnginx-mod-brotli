@@ -80,7 +80,7 @@ jobs:
       - name: Deploy to packagecloud
         uses: golift/upload-packagecloud@v1.1
         with:
-          userrepo: ${{ secrets.PACKAGECLOUD_USER }}/${{ secrets.PACKAGECLOUD_REPO }}
+          userrepo: ${{ secrets.PACKAGECLOUD_USER }}/${{ secrets.PACKAGECLOUD_MAINLINE_REPO }}
           debdists: ${{ matrix.os }}/${{ matrix.dist }}
           apitoken: ${{ secrets.PACKAGECLOUD_TOKEN }}
           packages: .
