@@ -24,6 +24,9 @@ jobs:
           - os: debian
             dist: bookworm
             runner: ubuntu-24.04-arm
+          - os: debian
+            dist: trixie
+            runner: ubuntu-24.04-arm
           - os: ubuntu
             dist: focal
             runner: ubuntu-24.04
@@ -38,6 +41,9 @@ jobs:
             runner: ubuntu-24.04
           - os: debian
             dist: bookworm
+            runner: ubuntu-24.04
+          - os: debian
+            dist: trixie
             runner: ubuntu-24.04
     steps:
       - name: Check out repository code

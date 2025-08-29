@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 9~),
                quilt (>= 0.46-7~),
                lsb-release,
                libssl-dev (>= 0.9.7),
-               libpcre3-dev,
+               libpcre2-dev,
                zlib1g-dev
 Standards-Version: 3.9.8.0
 Homepage: https://github.com/google/brotli
