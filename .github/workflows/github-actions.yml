@@ -10,9 +10,6 @@ jobs:
       matrix:
         include:
           - os: ubuntu
-            dist: focal
-            runner: ubuntu-24.04-arm
-          - os: ubuntu
             dist: jammy
             runner: ubuntu-24.04-arm
           - os: ubuntu
@@ -27,9 +24,6 @@ jobs:
           - os: debian
             dist: trixie
             runner: ubuntu-24.04-arm
-          - os: ubuntu
-            dist: focal
-            runner: ubuntu-24.04
           - os: ubuntu
             dist: jammy
             runner: ubuntu-24.04
