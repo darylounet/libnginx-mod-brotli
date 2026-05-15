@@ -15,6 +15,9 @@ jobs:
           - os: ubuntu
             dist: noble
             runner: ubuntu-24.04-arm
+          - os: ubuntu
+            dist: resolute
+            runner: ubuntu-24.04-arm
           - os: debian
             dist: bullseye
             runner: ubuntu-24.04-arm
@@ -29,6 +32,9 @@ jobs:
             runner: ubuntu-24.04
           - os: ubuntu
             dist: noble
+            runner: ubuntu-24.04
+          - os: ubuntu
+            dist: resolute
             runner: ubuntu-24.04
           - os: debian
             dist: bullseye
