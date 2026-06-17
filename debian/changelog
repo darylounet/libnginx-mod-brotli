@@ -1,3 +1,9 @@
+libnginx-mod-brotli (1.1.0+nginx-1.31.2-1~bullseye) bullseye; urgency=medium
+
+  * Updated upstream.
+
+ -- Cyril Aknine <caknine@clever-age.com>  Wed, 17 Jun 2026 19:07:55 +0200
+
 libnginx-mod-brotli (1.1.0+nginx-1.31.1-1~bullseye) bullseye; urgency=medium
 
   * Updated upstream.
