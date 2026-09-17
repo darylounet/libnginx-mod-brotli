@@ -37,6 +37,17 @@ ARG RELEASE
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV TZ=Europe/Paris
 
+# bullseye is EOL: deb.debian.org no longer serves it, so switch to the
+# frozen snapshot.debian.org mirror already referenced (commented out) in
+# this image's own sources.list.
+RUN if [ "${DISTRIB}" = "debian" ] && [ "${RELEASE}" = "bullseye" ]; then \
+        sed -i \
+            -e '/^deb http:\/\/deb\.debian\.org/d' \
+            -e 's/^# //' \
+            /etc/apt/sources.list && \
+        echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until; \
+    fi
+
 RUN apt-get update && apt-get --no-install-recommends --no-install-suggests -y install \
     git wget ca-certificates curl openssl gnupg2 apt-transport-https \
     unzip make libbrotli-dev libpcre2-dev zlib1g-dev build-essential devscripts \
