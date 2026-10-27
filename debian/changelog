@@ -1,3 +1,9 @@
+libnginx-mod-brotli (1.2.1+nginx-1.31.8-1~bullseye) bullseye; urgency=high
+
+  * Updated brotli upstream to fix CVE-2026-111497.
+
+ -- Cyril Aknine <caknine@clever-age.com>  Tue, 27 Oct 2026 10:19:07 +0100
+
 libnginx-mod-brotli (1.1.0+nginx-1.31.8-1~bullseye) bullseye; urgency=medium
 
   * Updated upstream.

@@ -2,7 +2,7 @@
 
 NGINX_PACKAGES_URL=https://nginx.org/packages/mainline
 
-BROTLI_VERSION="1.1.0"
+BROTLI_VERSION="1.2.1"
 NGINX_DEB_VERSION=`curl -s https://nginx.org/packages/mainline/debian/pool/nginx/n/nginx/ |grep '"nginx_' | sed -n "s/^.*\">nginx_\(.*\)\~.*$/\1/p" |sort -Vr |head -1`
 
 # Check that the distributions built by the workflow are the ones nginx.org
