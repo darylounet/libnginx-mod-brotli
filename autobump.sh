@@ -53,7 +53,7 @@ if [ -n "${REMOVED_DISTS}" ] || [ -n "${ADDED_DISTS}" ]; then
 fi
 
 docker build --pull -t deb-dch -f Dockerfile-deb-dch .
-docker run -it -v $PWD:/local -e HOME=/local deb-dch bash -c "cd /local && \
+docker run --rm -it -v $PWD:/local -e HOME=/local deb-dch bash -c "cd /local && \
     dch -M -v ${BROTLI_VERSION}+nginx-${NGINX_DEB_VERSION}~bullseye --distribution 'bullseye' 'Updated upstream.'"
 
 git add debian/changelog
